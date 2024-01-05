@@ -1,6 +1,9 @@
 {
 	"name": "fcc-learn-npm-package-json",
 	"author": "Romas Bitinas",
+	"description": "FreeCodeCamp backend course",
+	"private": false,
+	"keywords": ["node", "javascript", "backend"],
 	"dependencies": {
 		"express": "^4.14.0"
 	},
