@@ -3,7 +3,7 @@
 	"author": "Romas Bitinas",
 	"description": "FreeCodeCamp backend course",
 	"private": false,
-	"keywords": ["node", "javascript", "backend"],
+	"keywords": ["node", "javascript", "backend", "freecodecamp"],
 	"dependencies": {
 		"express": "^4.14.0"
 	},
