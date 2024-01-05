@@ -10,22 +10,19 @@ app.use((req, res, next) => {
 app.use("/public", express.static(__dirname + "/public"))
 
 app.get("/now", (req, res, next) => {
- next()
  res.json({time: req.time});
 }, (req, res) => {
  req.time = new Date().toString()
 })
 
-app.get("/json", (req, res, next) => {
+app.get("/json", (req, res) => {
  const message = process.env.MESSAGE_STYLE === "uppercase" ? "HELLO JSON" : "Hello json"
  res.json({ message })
- next();
 })
 
 
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
  res.sendFile(__dirname + "/views/index.html")
- next();
 })
 
 
@@ -45,4 +42,4 @@ app.get("/", (req, res, next) => {
 
 
 
- module.exports = app;
+module.exports = app;
