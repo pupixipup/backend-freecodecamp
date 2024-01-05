@@ -16,14 +16,16 @@ app.get("/now", (req, res, next) => {
  req.time = new Date().toString()
 })
 
-app.get("/json", (req, res) => {
+app.get("/json", (req, res, next) => {
  const message = process.env.MESSAGE_STYLE === "uppercase" ? "HELLO JSON" : "Hello json"
  res.json({ message })
+ next();
 })
 
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
  res.sendFile(__dirname + "/views/index.html")
+ next();
 })
 
 
