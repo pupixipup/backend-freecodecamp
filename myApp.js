@@ -18,8 +18,8 @@ res.json({echo: req.params.word})
 
 app.route("/name")
     .get( (req, res) => {
- const {firstname, lastname} = req.query;
- res.json({name: `${firstname} ${lastname}`})
+ const {firstname, lastname, first, last} = req.query;
+ res.json({name: `${firstname || first} ${lastname || last}`})
 })
     .post((req, res) => {
      console.log(req.body)
