@@ -1,12 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-console.log("---- ENV ----");
-console.log("typeof ENV: ", typeof process.env.MONGO_URI)
-console.log("has ticks", process.env.MONGO_URI.includes("'"))
-console.log("ENV: ", process.env.MONGO_URI);
-console.log(process.env);
-mongoose.connect(String(process.env.MONGO_URI), { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoUri = process.env.MONGO_URI.includes("'") ? process.env.MONGO_URI.replaceAll("'", "'") : process.env.MONGO_URI;
+mongoose.connect(String(mongoUri), { useNewUrlParser: true, useUnifiedTopology: true });
 
 let personSchema = new mongoose.Schema({
   name: String,
