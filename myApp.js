@@ -21,11 +21,18 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ["Smetana"]
   }).save().then((res) => {
     done(null, res);
-  }).catch((err) => done(err));
+  }).catch((err) => {
+    console.log(err);
+    done(err)});
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople).then((res) => {
+    done(null, res);
+  }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const findPeopleByName = (personName, done) => {
