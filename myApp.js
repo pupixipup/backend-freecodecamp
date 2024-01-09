@@ -52,13 +52,23 @@ const findOneByFood = (food, done) => {
 };
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  return Person.findById(personId).then((res) => {
+    done(null, res);
+  }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  return Person.findByIdAndUpdate(personId, { $push: { favoriteFoods: foodToAdd } })
+      .then((res) => {
+    done(null, res);
+  }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const findAndUpdate = (personName, done) => {
