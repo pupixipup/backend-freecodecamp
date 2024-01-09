@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const mongoUri = process.env.MONGO_URI.includes("'") ? process.env.MONGO_URI.replaceAll("'", "'") : process.env.MONGO_URI;
+const mongoUri = process.env.MONGO_URI.includes("'") ? process.env.MONGO_URI.replaceAll("'", "") : process.env.MONGO_URI;
 mongoose.connect(String(mongoUri), { useNewUrlParser: true, useUnifiedTopology: true });
 
 let personSchema = new mongoose.Schema({
