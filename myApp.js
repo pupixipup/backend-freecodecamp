@@ -75,24 +75,45 @@ const findEditThenSave = (personId, done) => {
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
-  done(null /*, data*/);
+  return Person.findOneAndUpdate({ name: personName }, {age: ageToSet})
+      .then((res) => {
+    done(null,res);
+  }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove(personId)
+      .then((res) => {
+        done(null,res);
+      }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-
-  done(null /*, data*/);
+  Person.remove({name: nameToRemove})
+      .then((res) => {
+        done(null,res);
+      }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
-  done(null /*, data*/);
+  Person.find({food: foodToSearch}).sort('name').limit(2).select("name favoriteFoods")
+      .then((res) => {
+        done(null,res);
+      }).catch((err) => {
+    console.log(err);
+    done(err)
+  });
 };
 
 /** **Well Done !!**
