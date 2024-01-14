@@ -109,7 +109,8 @@ const queryChain = (done) => {
   const foodToSearch = "burrito";
   Person
       .find({food: foodToSearch})
-      .sort({name: -1}).limit(2)
+      .sort({name: -1})
+      .limit(2)
       .select({age: 0})
       .exec()
       .then((res) => {
